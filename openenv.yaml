@@ -1,0 +1,22 @@
+name: email-triage-env
+version: 1.0.0
+description: "A real-world email triage environment where an AI agent reads, classifies and acts on emails"
+author: "your_name_here"
+tags:
+  - email
+  - triage
+  - nlp
+  - real-world
+tasks:
+  - id: easy
+    description: "Classify a single email as spam or not-spam"
+    difficulty: easy
+  - id: medium
+    description: "Classify email and choose correct action: reply, archive, or escalate"
+    difficulty: medium
+  - id: hard
+    description: "Triage a full inbox of 5 emails with priorities and deadlines"
+    difficulty: hard
+observation_space: "Email content, subject, sender, timestamp, inbox context"
+action_space: "classify, reply, archive, escalate, delete, flag, prioritize"
+reward_range: [0.0, 1.0]

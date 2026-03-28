@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+openai
+numpy
+faker
+pytest
+python-dotenv
