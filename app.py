@@ -18,6 +18,14 @@ def root():
 def health():
     return {"status": "ok"}
 
+# ── OpenEnv standard endpoints ───────────────────────────────────
+
+@app.post("/reset")
+def reset_default():
+    """Default reset — uses easy task"""
+    obs = envs["easy"].reset()
+    return obs
+
 @app.post("/reset/{task_id}")
 def reset(task_id: str):
     if task_id not in envs:
@@ -25,12 +33,23 @@ def reset(task_id: str):
     obs = envs[task_id].reset()
     return obs
 
+@app.post("/step")
+def step_default(action: Action):
+    """Default step — uses easy task"""
+    result = envs["easy"].step(action)
+    return result
+
 @app.post("/step/{task_id}")
 def step(task_id: str, action: Action):
     if task_id not in envs:
         raise HTTPException(status_code=404, detail=f"Unknown task: {task_id}")
     result = envs[task_id].step(action)
     return result
+
+@app.get("/state")
+def state_default():
+    """Default state — uses easy task"""
+    return envs["easy"].state()
 
 @app.get("/state/{task_id}")
 def state(task_id: str):
