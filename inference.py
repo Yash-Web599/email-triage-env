@@ -11,7 +11,7 @@ from env.environment import EmailTriageEnv
 from env.models import Action
 
 # ── Environment variables (mandatory) ───────────────────────────
-API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
 API_KEY      = os.getenv("HF_TOKEN") or os.getenv("OPENAI_API_KEY")
 MODEL_NAME   = os.getenv("MODEL_NAME", "gpt-3.5-turbo")
 
