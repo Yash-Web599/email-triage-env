@@ -18,11 +18,8 @@ def root():
 def health():
     return {"status": "ok"}
 
-# ── OpenEnv standard endpoints ───────────────────────────────────
-
 @app.post("/reset")
 def reset_default():
-    """Default reset — uses easy task"""
     obs = envs["easy"].reset()
     return obs
 
@@ -35,7 +32,6 @@ def reset(task_id: str):
 
 @app.post("/step")
 def step_default(action: Action):
-    """Default step — uses easy task"""
     result = envs["easy"].step(action)
     return result
 
@@ -48,7 +44,6 @@ def step(task_id: str, action: Action):
 
 @app.get("/state")
 def state_default():
-    """Default state — uses easy task"""
     return envs["easy"].state()
 
 @app.get("/state/{task_id}")
@@ -66,3 +61,10 @@ def list_tasks():
             {"id": "hard",   "difficulty": "hard"},
         ]
     }
+
+def main():
+    import uvicorn
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()

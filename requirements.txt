@@ -6,3 +6,4 @@ numpy
 faker
 pytest
 python-dotenv
+openenv-core>=0.2.0
