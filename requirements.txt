@@ -5,4 +5,3 @@ openai
 numpy
 faker
 pytest
-python-dotenvopenenv-core>=0.2.0
