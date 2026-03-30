@@ -1,7 +1,8 @@
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
 openai
 numpy
 faker
 pytest
+python-dotenv
