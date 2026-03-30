@@ -16,10 +16,11 @@ dependencies = [
     "faker",
     "pytest",
     "python-dotenv",
+    "openenv-core>=0.2.0",
 ]
 
-[project.optional-dependencies]
-dev = ["pytest"]
+[project.scripts]
+server = "app:app"
 
 [tool.openenv]
 name = "email-triage-env"
