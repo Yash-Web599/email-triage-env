@@ -79,4 +79,4 @@ def grade_medium(actions: list, emails: list) -> float:
             score += 0.5
         total += score
 
-    return round(total / len(emails), 2)
+    return round(max(0.01, min(0.99, total / len(emails))), 2)

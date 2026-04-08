@@ -58,4 +58,4 @@ def grade_easy(actions: list, emails: list) -> float:
         if action.classification == expected:
             correct += 1
 
-    return round(correct / len(emails), 2)
+    return round(max(0.01, min(0.99, correct / len(emails))), 2)
