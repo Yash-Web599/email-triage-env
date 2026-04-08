@@ -116,8 +116,8 @@ def run_task(client: OpenAI, task_id: str) -> float:
         observation = result.observation
 
     final_score = round(
-        min(1.0, total_reward / max(1, len(observation.emails))), 2
-    )
+    max(0.01, min(0.99, total_reward / max(1, len(observation.emails)))), 2
+)
 
     print(f"[END] task={task_id} score={final_score:.2f} steps={steps}", flush=True)
     return final_score
