@@ -44,7 +44,7 @@ def run_medium_task(env: EmailTriageEnv = None) -> float:
             steps += 1
             break
 
-    final_score = min(1.0, total_reward / max(1, len(observation.emails)))
+    final_score = max(0.001, min(0.999, total_reward / max(1, len(observation.emails))))
     print(f"[MEDIUM] Steps: {steps} | Score: {final_score:.2f}")
     return final_score
 

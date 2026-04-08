@@ -140,8 +140,8 @@ class EmailTriageEnv:
             score += 0.1
             reasons.append("efficiency bonus +0.1")
 
-        # clamp to [0.0, 1.0]
-        score = max(0.01, min(0.99, score))
+        # clamp to [0.001, 0.999]
+        score = max(0.001, min(0.999, score))
         return Reward(value=round(score, 2),
                       reason=" | ".join(reasons) or "no action matched")
 
