@@ -68,10 +68,10 @@ def grade_hard(actions: list, emails: list) -> float:
     """
     Deterministic grader for hard task.
     Checks classification + priority + action.
-    Returns score 0.0 - 1.0
+    Returns score strictly between 0 and 1
     """
     if not emails:
-        return 0.0
+        return 0.01
 
     total = 0.0
     spam_keywords = ["won", "prize", "click", "free",

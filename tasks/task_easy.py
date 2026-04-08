@@ -42,10 +42,10 @@ def run_easy_task(env: EmailTriageEnv = None) -> float:
 def grade_easy(actions: list, emails: list) -> float:
     """
     Deterministic grader: checks if each email was
-    classified correctly. Returns score 0.0 - 1.0
+    classified correctly. Returns score strictly between 0 and 1
     """
     if not emails:
-        return 0.0
+        return 0.01
 
     correct = 0
     spam_keywords = ["won", "prize", "click", "free",

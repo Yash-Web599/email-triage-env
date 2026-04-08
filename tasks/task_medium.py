@@ -53,10 +53,10 @@ def grade_medium(actions: list, emails: list) -> float:
     """
     Deterministic grader for medium task.
     Checks classification AND action choice.
-    Returns score 0.0 - 1.0
+    Returns score strictly between 0 and 1
     """
     if not emails:
-        return 0.0
+        return 0.01
 
     total = 0.0
     spam_keywords = ["won", "prize", "click", "free",
@@ -79,4 +79,4 @@ def grade_medium(actions: list, emails: list) -> float:
             score += 0.5
         total += score
 
-    return round(max(0.01, min(0.99, total / len(emails))), 2)
+    return max(0.01, min(0.99, total / len(emails)))
