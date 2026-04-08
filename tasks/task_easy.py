@@ -34,8 +34,8 @@ def run_easy_task(env: EmailTriageEnv = None) -> float:
         observation = result.observation
         steps += 1
 
-    final_score = max(0.001, min(0.999, total_reward))
-    print(f"[EASY] Steps: {steps} | Score: {final_score:.3f}")
+    final_score = max(0.0001, min(0.9999, total_reward))
+    print(f"[EASY] Steps: {steps} | Score: {final_score:.4f}")
     return final_score
 
 
@@ -45,7 +45,7 @@ def grade_easy(actions: list, emails: list) -> float:
     classified correctly. Returns score strictly between 0 and 1
     """
     if not emails:
-        return 0.001
+        return 0.0001
 
     correct = 0
     spam_keywords = ["won", "prize", "click", "free",
@@ -58,4 +58,4 @@ def grade_easy(actions: list, emails: list) -> float:
         if action.classification == expected:
             correct += 1
 
-    return max(0.001, min(0.999, correct / len(emails)))
+    return max(0.0001, min(0.9999, correct / len(emails)))

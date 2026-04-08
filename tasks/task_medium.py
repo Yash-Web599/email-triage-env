@@ -44,8 +44,8 @@ def run_medium_task(env: EmailTriageEnv = None) -> float:
             steps += 1
             break
 
-    final_score = max(0.001, min(0.999, total_reward / max(1, len(observation.emails))))
-    print(f"[MEDIUM] Steps: {steps} | Score: {final_score:.3f}")
+    final_score = max(0.0001, min(0.9999, total_reward / max(1, len(observation.emails))))
+    print(f"[MEDIUM] Steps: {steps} | Score: {final_score:.4f}")
     return final_score
 
 
@@ -56,7 +56,7 @@ def grade_medium(actions: list, emails: list) -> float:
     Returns score strictly between 0 and 1
     """
     if not emails:
-        return 0.01
+        return 0.0001
 
     total = 0.0
     spam_keywords = ["won", "prize", "click", "free",
@@ -79,4 +79,4 @@ def grade_medium(actions: list, emails: list) -> float:
             score += 0.5
         total += score
 
-    return max(0.001, min(0.999, total / len(emails)))
+    return max(0.0001, min(0.9999, total / len(emails)))
