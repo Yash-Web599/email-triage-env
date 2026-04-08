@@ -59,7 +59,7 @@ def run_hard_task(env: EmailTriageEnv = None) -> float:
         if not acted:
             break
 
-    final_score = max(0.001, min(0.999, total_reward / max(1, len(observation.emails))))
+    final_score = max(0.01, min(0.99, total_reward / max(1, len(observation.emails))))
     print(f"[HARD] Steps: {steps} | Score: {final_score:.2f}")
     return final_score
 
@@ -102,4 +102,4 @@ def grade_hard(actions: list, emails: list) -> float:
             score += 0.4
         total += score
 
-    return round(max(0.001, min(0.999, total / len(emails))), 2)
+    return max(0.01, min(0.99, total / len(emails)))

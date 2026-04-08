@@ -34,7 +34,7 @@ def run_easy_task(env: EmailTriageEnv = None) -> float:
         observation = result.observation
         steps += 1
 
-    final_score = max(0.001, min(0.999, total_reward))
+    final_score = max(0.01, min(0.99, total_reward))
     print(f"[EASY] Steps: {steps} | Score: {final_score:.2f}")
     return final_score
 
@@ -58,4 +58,4 @@ def grade_easy(actions: list, emails: list) -> float:
         if action.classification == expected:
             correct += 1
 
-    return round(max(0.001, min(0.999, correct / len(emails))), 2)
+    return max(0.01, min(0.99, correct / len(emails)))
